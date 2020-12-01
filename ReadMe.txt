@@ -15,5 +15,5 @@ Insertions:
 first insert classes 
 then insert teachers 
 then students 
-automatically will be added int persons table.
+automatically will be added into persons table.
 
