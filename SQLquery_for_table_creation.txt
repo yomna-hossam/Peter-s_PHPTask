@@ -1,0 +1,44 @@
+CREATE TABLE schooldb.teacher
+(
+  ID INT NOT NULL,
+  description CHAR NOT NULL,
+  PRIMARY KEY (ID)
+);
+
+CREATE TABLE schooldb.teacher_classes
+(
+  classes INT NOT NULL,
+  IDt INT NOT NULL,
+  PRIMARY KEY (classes, IDt),
+  FOREIGN KEY (IDt) REFERENCES teacher(ID)
+);
+
+CREATE TABLE schooldb.Classes
+(
+  classID INT NOT NULL,
+  class CHAR NOT NULL,
+  IDt INT NOT NULL,
+  PRIMARY KEY (classID),
+  FOREIGN KEY (IDt) REFERENCES teacher(ID)
+);
+
+CREATE TABLE schooldb.student
+(
+  ID INT NOT NULL,
+  class CHAR NOT NULL,
+  classID INT NOT NULL,
+  PRIMARY KEY (ID),
+  FOREIGN KEY (classID) REFERENCES Classes(classID)
+);
+
+CREATE TABLE schooldb.Person
+(
+  firstname CHAR NOT NULL,
+  ID INT NOT NULL,
+  lastname CHAR NOT NULL,
+  IDs INT NOT NULL,
+  IDt INT NOT NULL,
+  PRIMARY KEY (ID),
+  FOREIGN KEY (IDs) REFERENCES student(ID),
+  FOREIGN KEY (IDt) REFERENCES teacher(ID)
+);
